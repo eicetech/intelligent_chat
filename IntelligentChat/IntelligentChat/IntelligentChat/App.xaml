@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentChat.App"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             d1p1:Ignorable="d"
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Application.Resources>
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="WhiteColor">#ffffff</Color>
+            <Color x:Key="WhiteSmoke">#F5F5F5</Color>
+            <Color x:Key="DarkGrayColor">#333333</Color>
+            <Color x:Key="GrayColor">#D3D3D3</Color>
+            <Color x:Key="LightGrayColor">#E8E8E8</Color>
+            <Color x:Key="VeryLightGrayColor">#F2F2F2</Color>
+            <Color x:Key="BlueGrayColor">#3d5b7a</Color>
+            <Color x:Key="SendChatGrayColor">#b9b9b9</Color>
+            <Color x:Key="SlateColor">#404040</Color>
+            <Color x:Key="PlaceHolderColor">Silver</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+            <Color x:Key="SkyblueColor">#3a9fe5</Color>
+            <Color x:Key="OrangeColor">#FF6347</Color>
+            <Color x:Key="LightOrangeColor">#FF7F50</Color>
+            <Color x:Key="CyanBlueColor">#66b3ff</Color>
+            <Color x:Key="RedColor">#ff0000</Color>
+            <Color x:Key="IndicatorColor">#3a9fe5</Color>
+            <Color x:Key="LightGreenColor">#c1f0c1</Color>
+            <Color x:Key="LightYellowColor">#ffff4c</Color>
+            <Style x:Key="ChatHeadLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontFamily" Value="Roboto Regular"/>
+            </Style>
+            <Style x:Key="ChattingLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="Roboto Regular"/>
+            </Style>
+            <Style x:Key="SendChatButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                <Setter Property="TextColor" Value="#2e7fb7"></Setter>
+                <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="FontFamily" Value="Roboto Regular"/>
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="IncomingViewCellButtonAsLabel" TargetType="{x:Type Button}">
+                <Setter Property="BackgroundColor" Value="#3a9fe5"></Setter>
+                <Setter Property="TextColor" Value="#ffffff"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="FontFamily" Value="Roboto Regular"/>
+                <Setter Property="BorderWidth" Value="1"></Setter>
+                <Setter Property="BorderRadius" Value="10"/>
+            </Style>
+            <Style x:Key="OutgoingViewCellButtonAsLabel" TargetType="{x:Type Button}">
+                <Setter Property="BackgroundColor" Value="#F5F5F5"></Setter>
+                <Setter Property="TextColor" Value="#000000"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="FontFamily" Value="Roboto Regular"/>
+                <Setter Property="BorderWidth" Value="1"></Setter>
+                <Setter Property="BorderRadius" Value="10"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

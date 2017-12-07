@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentChat.View.CustomDashboard"
+             xmlns:local="clr-namespace:IntelligentChat.ViewModel"
+             xmlns:Control="clr-namespace:IntelligentChat.Control;assembly=IntelligentChat"
+             BackgroundColor="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="76*"/>
+        </Grid.RowDefinitions>
+        <!--Main Header-->
+        <StackLayout Grid.Row="0">
+            <Control:CircleImage Aspect="Fill"
+                                 HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 WidthRequest="50"
+                                 BorderThickness="1"
+                                 BorderColor="#f4ff81"
+                                 Source= "{Binding LoggedInUser.ImageUrl}"/>
+        </StackLayout>
+
+        <!--Tabs-->
+        <StackLayout BackgroundColor="White"
+                     Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="95*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Contact"
+                        TextColor="{Binding ContactTabTextColor}"
+                        FontFamily="Calibri"
+                        FontSize="Small"
+                        BackgroundColor="White"
+                        VerticalOptions="End"
+                        Command = "{Binding ButtonClick}"
+                        CommandParameter="{x:Static local:CurrentState.Contact}"/>
+
+                <BoxView BackgroundColor="{Binding ContactTabBoxColor}"
+                         Grid.Row="1"
+                         Grid.Column="0"
+                         VerticalOptions="Start"/>
+
+                <Button Grid.Column="1"
+                        Grid.Row="0"
+                        Text="Recent"
+                        TextColor="{Binding RecentTabTextColor}"
+                        FontFamily="Calibri"
+                        FontSize="Small"
+                        BackgroundColor="White"
+                        VerticalOptions="End"
+                        Command = "{Binding ButtonClick}"
+                        CommandParameter="{x:Static local:CurrentState.Recent}"/>
+
+                <BoxView BackgroundColor="{Binding RecentTabBoxColor}"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         VerticalOptions="Start"/>
+
+                <Button Grid.Column="2"
+                        Grid.Row="0"
+                        Text="Other"
+                        TextColor="{Binding OtherTabTextColor}"
+                        FontFamily="Calibri"
+                        FontSize="Small"
+                        BackgroundColor="White"
+                        VerticalOptions="End"
+                        Command = "{Binding ButtonClick}"
+                        CommandParameter="{x:Static local:CurrentState.Other}"/>
+
+                <BoxView BackgroundColor="{Binding OtherTabBoxColor}"
+                         Grid.Row="1"
+                         Grid.Column="2"
+                         VerticalOptions="Start"/>
+            </Grid>
+        </StackLayout>
+
+        <!--Search Stack-->
+        <StackLayout Grid.Row="2">
+            <Entry BackgroundColor="White"
+                   Placeholder="Search"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="Black"
+                   FontSize="Small"
+                   FontFamily="Calibri"/>
+
+        </StackLayout>
+
+        <!--All list Data-->
+        <StackLayout Grid.Row="3">
+            <ListView  x:Name="ListViewUser"
+                       HasUnevenRows="True"
+                       SeparatorColor="DarkGray"
+                       ItemsSource="{Binding ListSource}"
+                       SelectedItem="{Binding SelectedItem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Opacity ="100"
+                                  VerticalOptions="Fill"
+                                  HorizontalOptions="Fill">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50*"/>
+                                        <RowDefinition Height="50*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="65*"/>
+                                        <ColumnDefinition Width="15*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Text ="{Binding Name}"
+                                       FontFamily="Calibri"
+                                       TextColor="Black"
+                                       HorizontalOptions="StartAndExpand"
+                                       VerticalOptions="EndAndExpand"
+                                       FontSize="18"/>
+                                    <Label Grid.Row="0"
+                                       Grid.Column="2"
+                                       Text ="{Binding DisplayDateTime}"
+                                       FontFamily="Calibri"
+                                       TextColor="LightGray"
+                                       HorizontalOptions="StartAndExpand"
+                                       VerticalOptions="EndAndExpand"
+                                       FontSize="12"/>
+                                    <Label Grid.Row ="1"
+                                       Grid.Column ="1"
+                                           Grid.ColumnSpan="2"
+                                       FontFamily="Calibri"
+                                       Text ="{Binding Status}"
+                                       HorizontalOptions="StartAndExpand"
+                                       VerticalOptions="StartAndExpand"
+                                       FontSize ="15"/>
+                                    <Control:CircleImage Grid.Row="0"
+                                                         Grid.RowSpan="2"
+                                                         Grid.Column="0"
+                                                         Aspect="Fill"
+                                                         BorderThickness="1"
+                                                         BorderColor="#f4ff81"
+                                                         HorizontalOptions="CenterAndExpand"
+                                                         VerticalOptions="CenterAndExpand"
+                                                         Source= "{Binding ImageUrl}"/>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Grid>
+</ContentPage>
