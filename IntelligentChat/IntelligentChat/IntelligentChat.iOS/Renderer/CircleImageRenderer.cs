@@ -62,9 +62,8 @@ namespace IntelligentChat.iOS.Renderer
 
                 Control.Layer.AddSublayer(externalBorder);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Debug.WriteLine("Unable to create circle image: " + ex);
             }
         }
     }

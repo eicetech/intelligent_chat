@@ -4,7 +4,8 @@
              x:Class="IntelligentChat.View.CustomDashboard"
              xmlns:local="clr-namespace:IntelligentChat.ViewModel"
              xmlns:Control="clr-namespace:IntelligentChat.Control;assembly=IntelligentChat"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -104,9 +105,8 @@
         <StackLayout Grid.Row="3">
             <ListView  x:Name="ListViewUser"
                        HasUnevenRows="True"
-                       SeparatorColor="DarkGray"
-                       ItemsSource="{Binding ListSource}"
-                       SelectedItem="{Binding SelectedItem}">
+                       SeparatorColor="DarkGray" 
+                       ItemsSource="{Binding ListSource}" ItemTapped="ListViewUser_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

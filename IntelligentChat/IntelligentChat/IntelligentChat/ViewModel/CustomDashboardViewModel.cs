@@ -114,7 +114,14 @@ namespace IntelligentChat.ViewModel
                 RaisePropertyChanged();
             }
         }
-
+        public void MoveToChatPage()
+        {
+            var parm = new ObservableCollection<Contact>();
+            parm.Add(_loggedInUser);
+            parm.Add(_selectedItem);
+            if (_selectedItem != null)
+                _navigationService.NavigateTo(ViewModelLocator.chatPage, parm);
+        }
         public Contact SelectedItem
         {
             get { return _selectedItem; }
@@ -122,11 +129,6 @@ namespace IntelligentChat.ViewModel
             {
                 _selectedItem = value;
                 RaisePropertyChanged();
-                //var parm = new ObservableCollection<Contact>();
-                //parm.Add(_loggedInUser);
-                //parm.Add(_selectedItem);
-                //if (_selectedItem != null)
-                //    _navigationService.NavigateTo(ViewModelLocator.chatPage, parm);
             }
         }
 
@@ -292,6 +294,25 @@ namespace IntelligentChat.ViewModel
                     _buttonClick = new RelayCommand<object>(ButtonClickCommand);
                 return _buttonClick;
             }
+        }
+
+        private RelayCommand _listTappedCommand;
+        public RelayCommand ListTappedCommand
+        {
+            get
+            {
+                if (_listTappedCommand == null)
+                    _listTappedCommand = new RelayCommand(ListTappedCommandFuntion);
+                return _listTappedCommand;
+            }
+        }
+        private void ListTappedCommandFuntion()
+        {
+            try
+            {
+                //ShowHide((CurrentState)(sender));
+            }
+            catch (Exception) { }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace IntelligentChat.Droid.Renderer
     [Preserve(AllMembers = true)]
     public class CircleImageRenderer : ImageRenderer
     {
-        public async static void Init()
+        public static void Init()
         {
             var temp = DateTime.Now;
         }

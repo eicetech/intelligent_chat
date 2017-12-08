@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="IntelligentChat.View.IncomingCell"
+          xmlns:local ="clr-namespace:IntelligentChat;assembly=IntelligentChat"
+          xmlns:dataTemplateSelector="clr-namespace:IntelligentChat;assembly=IntelligentChat">
+    <Grid ColumnSpacing="0"
+          HorizontalOptions="End"
+          Padding="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions HorizontalOptions="End">
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0"
+               Padding="5"
+               HasShadow="False"
+               Grid.Column="1"
+               HorizontalOptions="End"
+               BackgroundColor="{StaticResource CyanBlueColor}">
+            <Grid Padding="0"
+                  Margin="0">
+                <Grid.RowDefinitions HorizontalOptions="End">
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Style="{StaticResource ChatHeadLabelStyle}"
+                       Text="{Binding Contact.Name}"
+                       TextColor="{StaticResource LightYellowColor}"
+                       HorizontalOptions="End"/>
+                <Label Grid.Row="1"
+                       Style="{StaticResource ChattingLabelStyle}"
+                       TextColor="{StaticResource WhiteColor}"
+                       Text="{Binding Text}"/>
+            </Grid>
+        </Frame>
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               FontSize="14"
+               BackgroundColor="Transparent"
+               IsVisible="false"
+               TextColor="Black"
+               Text="ChatBox" />
+    </Grid>
+</ViewCell>

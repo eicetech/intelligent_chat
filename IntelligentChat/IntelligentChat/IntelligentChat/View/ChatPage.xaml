@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentChat.View.ChatPage"
+             xmlns:Control="clr-namespace:IntelligentChat.Control;assembly=IntelligentChat"
+             xmlns:local ="clr-namespace:IntelligentChat;assembly=IntelligentChat"
+             xmlns:al="clr-namespace:AiForms.Layouts;assembly=AiForms.Layouts"
+             x:Name="ChatPageView"
+             NavigationPage.HasNavigationBar="True"
+             Title="{Binding SelectedContact.Name}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MyDataTemplateSelector x:Key="MessageTemplateSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="82*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <RelativeLayout Grid.Row="0">
+            <ListView x:Name="MessagesListView"
+                      ItemTemplate="{StaticResource MessageTemplateSelector}"
+                      ItemsSource="{Binding Messages}"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"/>
+        </RelativeLayout>
+        <ScrollView Orientation="Horizontal" Grid.Row="1">
+            <al:RepeatableStack Orientation="Horizontal"
+                                ItemsSource="{Binding AutoSuggestMessages}">
+                <al:RepeatableStack.ItemTemplate>
+                    <DataTemplate>
+                        <Control:RoundCornerButton Text="{Binding}"
+                                                   TextColor="White"
+                                                   BackColor="#1976D2"
+                                                   BackgroundColor="#1976D2"
+                                                   Margin="1,0,0,1"
+                                                   Command="{Binding BindingContext.SendBottCommand, Source={x:Reference ChatPageView}}"
+                                                   CommandParameter="{Binding}"/>
+                    </DataTemplate>
+                </al:RepeatableStack.ItemTemplate>
+            </al:RepeatableStack>
+        </ScrollView>
+        <StackLayout Grid.Row="2">
+            <Grid Padding="5"
+                  x:Name="MessageControls"
+                  ColumnSpacing="2"
+	              BackgroundColor="{StaticResource VeryLightGrayColor}"
+	              VerticalOptions="FillAndExpand"
+	              HorizontalOptions="FillAndExpand"
+	              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=MessagesListView, Property=Height,Factor=.81,Constant=0}"
+	              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5,Constant=0}"
+	              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=MessagesListView, Property=Height,Factor=.08,Constant=0}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Entry Grid.Column="0"
+                       Margin="2"
+                       FontSize="14"
+                       TextColor="Black"
+                       PlaceholderColor="DarkGray"
+                       Placeholder="What's on your mind?"
+                       Text="{Binding Message}"/>
+                <Button Grid.Column="1"
+                        Text="SEND"
+                        Command="{Binding SendCommand}"
+                        Style="{StaticResource SendChatButtonStyle}"/>
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

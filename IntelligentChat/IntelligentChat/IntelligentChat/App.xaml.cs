@@ -29,7 +29,10 @@ namespace IntelligentChat
                 Current.Resources = new ResourceDictionary();
             }
             nav = new NavigationService();
+            nav.Configure(ViewModelLocator.chatPage, typeof(ChatPage));
             nav.Configure(ViewModelLocator.customDashboard, typeof(CustomDashboard));
+            nav.Configure(ViewModelLocator.incomingCell, typeof(IncomingCell));
+            nav.Configure(ViewModelLocator.outgoingCell, typeof(OutgoingCell));
             SimpleIoc.Default.Unregister<INavigationService>();
             SimpleIoc.Default.Register<INavigationService>(() => nav);
            var page = new CustomDashboard();

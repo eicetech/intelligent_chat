@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="IntelligentChat.View.OutgoingCell"
+          xmlns:Control="clr-namespace:IntelligentChat.Control;assembly=IntelligentChat"
+          xmlns:dataTemplateSelector="clr-namespace:IntelligentChat;assembly=IntelligentChat">
+    <Grid ColumnSpacing="0" HorizontalOptions="Start" Padding="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="60"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions HorizontalOptions="Start">
+            <RowDefinition Height="Auto"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Frame Padding="5" Grid.Row="0" HasShadow="false" Grid.Column="1" BackgroundColor="{StaticResource WhiteSmoke}">
+            <Grid Padding="0" Margin="0">
+                <Grid.RowDefinitions HorizontalOptions="Start">
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "15*"/>
+                    <ColumnDefinition Width = "85*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Grid.RowSpan="2" Grid.Row="0"> 
+                    <Control:CircleImage Aspect="Fill"
+                                     HorizontalOptions="CenterAndExpand"
+                                     VerticalOptions="StartAndExpand"
+                                     BorderThickness="1"
+                                     BorderColor="#f4ff81"
+                                     Source= "{Binding Contact.ImageUrl}" HeightRequest="30"/>
+
+                </Grid>
+                <Label Style="{StaticResource ChatHeadLabelStyle}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding NameWithTime}"
+                       TextColor="Teal"/>
+                <Label Style="{StaticResource ChattingLabelStyle}"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       TextColor="Black"
+                       Text="{Binding Text}" />
+            </Grid>
+        </Frame>
+        <Label Grid.Row="0" Grid.Column="2" FontSize="14" BackgroundColor="Transparent" IsVisible="false"  TextColor="Black" Text="SCRM" />
+    </Grid>
+</ViewCell>

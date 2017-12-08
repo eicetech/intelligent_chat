@@ -9,15 +9,7 @@ namespace IntelligentChat.Model
 {
     public class MessageModel : ViewModelBase
     {
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { name = value;
-                NameWithTime = value + " ," + MessagDateTime.ToString("HH:mm");
-                RaisePropertyChanged(); }
-        }
-
+        
         private string nameWithTime;
         public string NameWithTime
         {
@@ -34,8 +26,14 @@ namespace IntelligentChat.Model
         public DateTime MessagDateTime
         {
             get { return messageDateTime; }
-            set { messageDateTime = value; NameWithTime = name + " ," + value.ToString("HH:mm");
-                RaisePropertyChanged(); }
+            set
+            {
+                messageDateTime = value;
+
+                if (Contact != null)
+                    NameWithTime = Contact.Name + " ," + value.ToString("HH:mm");
+                RaisePropertyChanged();
+            }
         }
         private bool isIncoming;
         public bool IsIncoming
@@ -51,29 +49,27 @@ namespace IntelligentChat.Model
             set { attachementUrl = value; RaisePropertyChanged(); }
         }
 
-        private string _contactImageURL;
-        public string ContactImageURL
+        private Contact _contact;
+        public Contact Contact
         {
-            get { return _contactImageURL; }
-            set { _contactImageURL = value; RaisePropertyChanged(); }
+            get { return _contact; }
+            set
+            {
+                _contact = value;
+                if (value != null)
+                    NameWithTime = value.Name + " ," + MessagDateTime.ToString("HH:mm");
+                RaisePropertyChanged();
+            }
         }
 
-        private string subject;
-        public string Subject
-        {
-            get { return subject; }
-            set { subject = value; RaisePropertyChanged(); }
-        }
 
-        public MessageModel(string name, string text, DateTime messagDateTime, bool isIncoming, string attachementUrl, string subject,string contactImageURL="")
+        public MessageModel(Contact contact, string text, DateTime messagDateTime, bool isIncoming, string attachementUrl)
         {
-            Name = name;
             Text = text;
+            Contact = contact;
             MessagDateTime = messagDateTime;
             IsIncoming = isIncoming;
             AttachementUrl = attachementUrl;
-            Subject = subject;
-            ContactImageURL = contactImageURL;
         }
     }
 }

@@ -19,5 +19,12 @@ namespace IntelligentChat.View
             BindingContext = binding;
             binding.LoadData();
         }
+
+        private void ListViewUser_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var binding = App.Locator.CustomDashboard;
+            binding.SelectedItem = (Model.Contact)e.Item;
+            binding.MoveToChatPage();
+        }
     }
 }
